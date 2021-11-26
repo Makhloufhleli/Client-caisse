@@ -1,0 +1,27 @@
+<div class="card-title text-uppercase text-center py-3">Sign In</div>
+<div class="mt-2 mb-2"></div>
+<form (submit)="login()">
+    <div class="form-group">
+        <label for="exampleInputUsername">User name</label>
+        <div class="position-relative has-icon-right">
+            <input [(ngModel)]="user.username" name="username" required type="text" id="exampleInputUsername" class="form-control input-shadow">
+            <div class="form-control-position">
+                <i class="icon-user text-warning"></i>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword">Password</label>
+        <div class="position-relative has-icon-right">
+            <input [(ngModel)]="user.password" name="password" type="password" id="exampleInputPassword" class="form-control input-shadow">
+            <div class="form-control-position">
+                <i class="icon-lock text-warning"></i>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block">Sign In</button>
+</form>
+<div class="card-footer text-center py-3">
+    <p class="text-warning mb-0">Do not have an account? <a [routerLink]="['/auth/signup']"> Sign Up here</a></p>
+</div>

@@ -1,0 +1,53 @@
+<div class="card-title text-uppercase text-center py-3">Sign Up</div>
+<form (submit)="signUp()">
+
+    <div class="form-group">
+        <label for="exampleInputName">User name</label>
+        <div class="position-relative has-icon-right">
+            <input [(ngModel)]="user.username" name="username" type="text" id="exampleInputUserName" class="form-control input-shadow">
+            <div class="form-control-position">
+                <i class="icon-user text-warning"></i>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputName">Phone</label>
+        <div class="position-relative has-icon-right">
+            <input [(ngModel)]="user.phoneNumber" name="phoneNumber" type="text" id="exampleInputPhoneNumber" class="form-control input-shadow">
+            <div class="form-control-position">
+                <i class="icon-phone text-warning"></i>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword" class="">Password</label>
+        <div class="position-relative has-icon-right">
+            <div class="form-control-position">
+                <i class="icon-lock text-warning"></i>
+            </div>
+            <input [(ngModel)]="user.password" name="password" type="password" id="exampleInputPassword" class="form-control input-shadow">
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword" class="">Sex</label>
+        <div class="position-relative has-icon-right">
+
+            <input [(ngModel)]="user.sex" value="male" type="radio" name="sex" class="text-warning" />
+            <label class="form-check-label ml-2" for="flexRadioDefault2">
+                Male
+            </label>
+
+            <input [(ngModel)]="user.sex" value="female" type="radio" name="sex" class="text-warning ml-4" />
+            <label class="form-check-label ml-2" for="flexRadioDefault2">
+                Female
+            </label>
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-success btn-block waves-effect waves-light">Register</button>
+</form>
+<div class="card-footer text-center py-3">
+    <p class="text-warning mb-0">You have an account? <a [routerLink]="['/auth/login']"> Back to login</a></p>
+</div>
