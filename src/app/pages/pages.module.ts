@@ -8,17 +8,27 @@ import { authInterceptorProviders } from '../model/helpers/auth.interceptor';
 import { CellComponent } from './components/cell/cell.component';
 
 import {NgxPaginationModule} from 'ngx-pagination';
+import { SupplierComponent } from './components/supplier/supplier.component';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { SuppliersFilterPipe } from '../model/filters/suppliers-filter.pipe';
 
 @NgModule({
   declarations: [
     ContactsComponent,
     HomeComponent,
-    CellComponent
+    CellComponent,
+    SupplierComponent,
+    SuppliersFilterPipe
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    FormsModule
   ],
   providers: [
     authInterceptorProviders

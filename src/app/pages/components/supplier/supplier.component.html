@@ -1,0 +1,117 @@
+<div class="row" *ngIf="addForm">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <label>Add new supplier</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                        <button class="btn btn-sm btn-danger float-right" (click)="hideAddForm()" *ngIf="addForm">
+                            <i class="icon-close"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col col-lg-12">
+                        <form (submit)="saveSupplier()">
+                            <div class="row">
+                                <div class="col col-lg-3">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input [(ngModel)]="supplierToSave.name" name="name" required type="text" class="form-control input-shadow">
+                                    </div>
+                                </div>
+                                <div class="col col-lg-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword">Adress</label>
+                                        <input [(ngModel)]="supplierToSave.adress" name="adress" type="text" class="form-control input-shadow">
+                                    </div>
+                                </div>
+                                <div class="col col-lg-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword">Phone number</label>
+                                        <input [(ngModel)]="supplierToSave.phoneNumber" name="phoneNumber" type="text" class="form-control input-shadow">
+                                    </div>
+                                </div>
+                                <div class="col col-lg-3">
+                                    <label class="text-hidden"> .</label>
+                                    <button type="submit" class="btn btn-success btn-block">Save</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <label>Search</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" [(ngModel)]="name" name="name" placeholder="Enter supplier name to search..." class="form-control small" />
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button class="btn btn-sm btn-success float-right" (click)="showAddForm()" *ngIf="!addForm">
+                            <i class="icon-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table table-bordered align-items-center" style="max-height: 80vh">
+                                <thead>
+                                    <th><small>Name</small></th>
+                                    <th><small>Adress</small></th>
+                                    <th><small>Phone</small></th>
+                                    <th><i class="icon-settings float-right"></i> </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let supplier of listSuppliers | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage } | filter:name">
+                                        <td>{{ supplier.name }}</td>
+                                        <td>{{ supplier.adress }}</td>
+                                        <td>{{ supplier.phoneNumber }}</td>
+                                        <td>
+                                            <i class=" btn icon-pencil"></i>
+
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="icon-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <pagination-controls class="float-right" (pageChange)="currentPage = $event"></pagination-controls>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

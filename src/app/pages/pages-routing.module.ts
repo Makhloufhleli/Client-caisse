@@ -4,6 +4,7 @@ import { PagesLayoutComponent } from './layout/pages-layout.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { HomeComponent } from './components/home/home.component';
 import { CellComponent } from './components/cell/cell.component';
+import { SupplierComponent } from './components/supplier/supplier.component';
 
 const routes: Routes = [
   {
@@ -15,8 +16,8 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'contacts',
-        component: ContactsComponent
+        path: 'suppliers',
+        component: SupplierComponent
       },
       {
         path: 'cell',

@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { baseUrl } from 'src/environments/environment';
 
 const API_URL = baseUrl + "/users/";
-const token = localStorage.getItem('auth-token');
 
 @Injectable({
   providedIn: 'root'

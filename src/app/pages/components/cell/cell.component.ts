@@ -8,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class CellComponent implements OnInit {
 
   currentPage: number = 1;
+  itemName: any;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getListArticles(){
+
   }
 
 }

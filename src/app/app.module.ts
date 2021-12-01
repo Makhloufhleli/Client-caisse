@@ -24,7 +24,7 @@ import { authInterceptorProviders } from './model/helpers/auth.interceptor';
   declarations: [
     AppComponent,
     PagesLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
   ],
   imports: [
     BrowserModule,
