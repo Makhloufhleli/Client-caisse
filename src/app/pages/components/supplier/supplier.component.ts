@@ -1,5 +1,6 @@
 import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { data } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
 import { Supplier } from 'src/app/model/entities/supplier';
 import { SupplierService } from 'src/app/model/services/suppliers/supplier.service';
@@ -47,6 +48,13 @@ export class SupplierComponent implements OnInit {
     this.supplierService.saveSupplier(this.supplierToSave).subscribe(data=>{
       this.getAllSuppliers();
       this.hideAddForm();
+      this.toastr.success(data.message);
+    })
+  }
+
+  deleteSupplier(idSupplier: number){
+    this.supplierService.deleteSupplier(idSupplier).subscribe(data=>{
+      this.getAllSuppliers();
       this.toastr.success(data.message);
     })
   }

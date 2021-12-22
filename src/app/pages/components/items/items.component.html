@@ -1,0 +1,178 @@
+
+<!--********************************************** Create **********************************************-->
+<div class="row" *ngIf="addForm">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <label>Add new item</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                        <button class="btn btn-sm btn-danger float-right" (click)="hideAddForm()" *ngIf="addForm">
+                            <i class="icon-close"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col col-lg-12">
+                        <form (submit)="saveItem()">
+                            <div class="row">
+                                <div class="col col-lg-4">
+                                    <div class="form-group">
+                                        <label for="name">Bar code</label>
+                                        <input [(ngModel)]="itemToSave.code" name="code" required type="text" class="form-control input-shadow">
+                                    </div>
+                                </div>
+                                <div class="col col-lg-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword">Wording</label>
+                                        <input [(ngModel)]="itemToSave.wording" name="wording" type="text" class="form-control input-shadow">
+                                    </div>
+                                </div>
+                                <div class="col col-lg-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword">Purchase price</label>
+                                        <input [(ngModel)]="itemToSave.purchasePrice" name="purchasePrice" type="number" class="form-control input-shadow">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col col-lg-4">
+                                    <div class="form-group">
+                                        <label for="cellPrice">Cell price</label>
+                                        <input [(ngModel)]="itemToSave.cellPrice" name="cellPrice" required type="number" class="form-control input-shadow">
+                                    </div>
+                                </div>
+                                <div class="col col-lg-4">
+                                    <div class="form-group">
+                                        <label for="stockQuantity">Stock quantity</label>
+                                        <input [(ngModel)]="itemToSave.stockQuantity" name="stockQuantity" type="number" class="form-control input-shadow">
+                                    </div>
+                                </div>
+                                <div class="col col-lg-4">
+                                    <div class="form-group">
+                                        <label for="alertStockQuantity">Alert stock quantity</label>
+                                        <input [(ngModel)]="itemToSave.alertStockQuantity" name="alertStockQuantity" type="number" class="form-control input-shadow">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col col-lg-3">
+                                    <div class="form-group">
+                                        <label for="supplier">Supplier</label>
+                                        <select [(ngModel)]="itemToSave.supplier" name="supplier" (ngModelChange)="getSupplierSelected($event)" class="form-control  input-shadow">
+                                            <option *ngFor="let supplier of listSuppliers" value="{{supplier.id}}">{{ supplier.name }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-3">
+                                    <div class="form-group">
+                                        <label for="supplier">Unit</label>
+                                        
+                                        <select [(ngModel)]="itemToSave.unit" name="unit" required class="form-control input-shadow">
+                                            <option value="UNIT_KILOS">Kilo gramm</option>
+                                            <option value="UNIT_PIECE">Piece</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-3">
+                                    <div class="form-group">
+                                        <label for="stockQuantity">Has expiration date</label>
+                                        <input [(ngModel)]="itemToSave.hasExpirationDate" name="hasExpirationDate" type="checkbox" class="form-control input-shadow">
+                                    </div>
+                                </div>
+                                <div class="col col-lg-3">
+                                    <div class="form-group" *ngIf="itemToSave.hasExpirationDate">
+                                        <label for="alertStockQuantity">Expiration date</label>
+                                        <input [(ngModel)]="itemToSave.expirationDate" name="expirationDate" type="date" class="form-control input-shadow">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col col-lg-2">
+                                    <button type="submit" class="btn btn-success btn-block">Save</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--********************************************** List **********************************************-->
+
+<div class="row" *ngIf="!addForm">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <label>Search</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                        <input type="text" [(ngModel)]="wording" name="wording" placeholder="Enter item wording to search..." class="form-control small" />
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button class="btn btn-sm btn-success float-right" (click)="showAddForm()">
+                            <i class="icon-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table table-bordered align-items-center" style="max-height: 80vh">
+                                <thead>
+                                    <th><small>Bar code</small></th>
+                                    <th><small>Wording</small></th>
+                                    <th><small>Purchase price</small></th>
+                                    <th><i class="icon-settings float-right"></i> </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of listItems | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage } | filter:wording">
+                                        <td>{{ item.barCode }}</td>
+                                        <td>{{ item.wording }}</td>
+                                        <td>{{ item.purchasePrice }}</td>
+                                        <td>
+                                            <i class=" btn icon-pencil"></i>
+
+                                            <button class="btn btn-sm btn-danger" (click)="deleteItem(item.id)">
+                                                <i class="icon-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td colspan="4">
+                                            <label *ngIf="listItems.length == 0" for="message" class="text-info center">No items found</label>
+                                            <pagination-controls class="float-right" (pageChange)="currentPage = $event"></pagination-controls>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

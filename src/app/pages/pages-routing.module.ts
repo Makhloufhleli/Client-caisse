@@ -5,6 +5,7 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { HomeComponent } from './components/home/home.component';
 import { CellComponent } from './components/cell/cell.component';
 import { SupplierComponent } from './components/supplier/supplier.component';
+import { ItemsComponent } from './components/items/items.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,11 @@ const routes: Routes = [
       {
         path: 'cell',
         component: CellComponent,
+      },
+      
+      {
+        path: 'items',
+        component: ItemsComponent,
       },
       {
         path: '',

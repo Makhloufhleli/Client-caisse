@@ -27,4 +27,12 @@ export class SupplierService {
   searchSupplier(name: string): Observable<any>{
     return this.http.get(`${baseUrl}/suppliers/?name=${name}`, httpOptions);
   }
+
+  deleteSupplier( idSupplier: number): Observable<any>{
+    return this.http.delete(`${baseUrl}/suppliers/delete/${idSupplier}`, httpOptions)
+  }
+
+  getSupplierById(idSupplier: number): Observable<any>{
+    return this.http.get(`${baseUrl}/suppliers/${idSupplier}`, httpOptions);
+  }
 }

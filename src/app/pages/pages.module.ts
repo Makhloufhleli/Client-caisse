@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { SuppliersFilterPipe } from '../model/filters/suppliers-filter.pipe';
+import { ItemsComponent } from './components/items/items.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SuppliersFilterPipe } from '../model/filters/suppliers-filter.pipe';
     HomeComponent,
     CellComponent,
     SupplierComponent,
-    SuppliersFilterPipe
+    SuppliersFilterPipe,
+    ItemsComponent
   ],
   imports: [
     CommonModule,
